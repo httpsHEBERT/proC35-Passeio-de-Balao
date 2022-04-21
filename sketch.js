@@ -25,7 +25,7 @@ function setup(){
   ballon = createSprite(380, 330, 150, 150);
   ballon.addAnimation("ballon", ballonImg);
   ballon.frameDelay = 10; //melhor do que ficar repetindo no loadAnimation hehe :D
-  ballon.scale = 0.5;
+  ballon.scale = 0.7;
 
   var ballonPosition = database.ref("ballon/position");
   ballonPosition.on("value", readPosition, showError);
@@ -49,10 +49,12 @@ function draw(){
   }else if(keyDown(UP_ARROW) || keyDown("w")){
     
     writePosition(0, -5);
+    ballon.scale -= 0.005;
 
   }else if(keyDown(DOWN_ARROW) || keyDown("s")){
 
     writePosition(0, 5);
+    ballon.scale += 0.005;
   }
 
   drawSprites();
